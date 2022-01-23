@@ -1,4 +1,4 @@
-import React, { useContext, createContext, useState } from 'react'
+import React, { useContext, createContext, useState, useEffect } from 'react'
 
 const ResultContext = createContext()
 const baseURL = 'https://google-search3.p.rapidapi.com/api/v1'
@@ -22,6 +22,7 @@ export const ResultContextProvider = ({ children }) => {
     setResults(data)
     setIsLoading(false)
   }
+  console.log(results)
   return (
     <ResultContext.Provider
       value={{ getResults, results, searchTerm, setSearchTerm, isLoading }}

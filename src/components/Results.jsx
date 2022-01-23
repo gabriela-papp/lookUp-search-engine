@@ -9,13 +9,11 @@ const Results = () => {
   const location = useLocation()
 
   useEffect(() => {
-    let unmounted = false
-    if (!unmounted) {
-      getResults('/se arch/q=AustraliaQueensland')
+    let unmounted = true
+    if (unmounted) {
+      getResults('/search/q=Australia+Queensland')
     }
-    return () => {
-      unmounted = true
-    }
+    return () => (unmounted = false)
   }, [])
 
   if (isLoading) return <Loading />
