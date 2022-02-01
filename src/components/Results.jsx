@@ -4,16 +4,12 @@ import ReactPlayer from 'react-player'
 import { useResultContext } from '../contexts/ResultContextProvider'
 import Loading from './Loading'
 
-const Results = () => {
+export const Results = () => {
   const { results, isLoading, getResults, searchTerm } = useResultContext()
   const location = useLocation()
 
   useEffect(() => {
-    let unmounted = true
-    if (unmounted) {
-      getResults('/search/q=Australia+Queensland')
-    }
-    return () => (unmounted = false)
+    getResults('/search/q=Australia+Queensland')
   }, [])
 
   if (isLoading) return <Loading />
@@ -46,5 +42,3 @@ const Results = () => {
       return 'ERROR'
   }
 }
-
-export default Results

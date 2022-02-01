@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css'
-import Results from './Results'
+import { Results } from './Results'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 const RoutesItems = () => {
