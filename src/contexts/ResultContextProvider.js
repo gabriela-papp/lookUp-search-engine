@@ -6,7 +6,7 @@ const baseURL = 'https://google-search3.p.rapidapi.com/api/v1'
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState('australia queensland')
 
   const getResults = (type) => {
     setIsLoading(true)
@@ -19,7 +19,15 @@ export const ResultContextProvider = ({ children }) => {
       },
     })
       .then((response) => response.json())
-      .then((data) => setResults(data))
+      .then((data) => {
+        if (type.includes('/news')) {
+          setResults(data.entries)
+        } else if (type.includes('/images')) {
+          setResults(data.image_results)
+        } else {
+          setResults(data.results)
+        }
+      })
 
     setIsLoading(false)
   }
