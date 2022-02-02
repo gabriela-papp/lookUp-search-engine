@@ -40,7 +40,7 @@ export const Results = () => {
       )
     case '/images':
       return (
-        <div className="flex flex-wrap justify-conter items-center">
+        <div className="flex flex-wrap justify-between items-center sm:place-items-center">
           {results?.map(({ image, link: { href, title }, index }) => (
             <a
               className="sm:p-3 p-5"
@@ -64,12 +64,12 @@ export const Results = () => {
                 <p className="text-lg dark:text-blue-300 text-blue-700">
                   {title}
                 </p>
-                <div className="flex gap-4">
-                  <a href={source?.href} target="_blank" rel="noreferrer">
-                    {source?.href}
-                  </a>
-                </div>
               </a>
+              <div className="flex gap-4">
+                <a href={source?.href} target="_blank" rel="noreferrer">
+                  {source?.href}
+                </a>
+              </div>
             </div>
           ))}
         </div>
